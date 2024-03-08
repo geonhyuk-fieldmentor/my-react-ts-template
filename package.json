@@ -4,14 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "react-scripts start",
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint src --ext .ts,.tsx --fix --report-unused-disable-directives --max-warnings 0",
+    "format": "prettier --write .",
     "preview": "vite preview",
     "test": "vitest --coverage",
     "coverage": "vitest run --coverage",
-    "deploy": "aws s3 sync dist/ ",
-    "cloudfront-invalidation": "aws cloudfront create-invalidation --distribution-id --paths '/*'"
+    "deploy": "aws s3 sync ./dist {s3://{s3-bucket-name}",
+    "cloudfront-invalidation": "aws cloudfront create-invalidation --distribution-id {cloudfront-distribution-id} --paths '/*'"
   },
   "dependencies": {
     "react": "^18.2.0",
